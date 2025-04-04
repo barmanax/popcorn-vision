@@ -7,4 +7,3 @@ Steps:
 
 Phase 3: ML Model for Flake Prediction
 ✅ Goal: Use kernel characteristics to predict flake area.
-Steps:
