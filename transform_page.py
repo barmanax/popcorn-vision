@@ -21,11 +21,12 @@ def filter_black_areas(image):
     black_mask = cv2.morphologyEx(black_mask, cv2.MORPH_CLOSE, kernel)
 
     # Show the refined black mask
+    '''
     plt.imshow(black_mask, cmap="gray")
     plt.title("Refined Black Mask")
     plt.axis('off')
     plt.show()
-
+    '''
     return black_mask
 
 def find_corner_coords(image):
@@ -80,11 +81,12 @@ def find_corner_coords(image):
 
     # Show detected corner coordinates
     img_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    '''
     plt.imshow(img_rgb)
     plt.title("Detected Corner Markers")
     plt.axis('off')
     plt.show()
-
+    '''
     return corner_coords
 
 def transform_page(image, corners):
@@ -117,17 +119,18 @@ def transform_page(image, corners):
     # Apply the transformation
     warped_image = cv2.warpPerspective(image, M, (output_width, output_height))
 
+    '''
     plt.imshow(cv2.cvtColor(warped_image, cv2.COLOR_BGR2RGB))
     plt.title("Warped Page")
     plt.axis('off')
     plt.show()
-
+    '''
     return warped_image
 
-def process_page(image):
+def warp_image_to_bounding_box(image):
     """Pipeline for detecting and transforming a white page using black markers."""
     corners = find_corner_coords(image)
-    print(corners)
+    # print(corners)
     if corners is None:
         return None
 
